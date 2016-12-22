@@ -19,8 +19,8 @@ namespace WpfApplication1
     {
         public string SubName { get; set; } = "subname";
         public string SubReadOnlyStr { get; private set; } = "sub readonly";
-        public int SubInt { get; set; } = 3;
-        public int SubReadOnlyInt { get; private set; } = 4;
+        //public int SubInt { get; set; } = 3;
+       // public int SubReadOnlyInt { get; private set; } = 4;
         public TestEnum SubEnum { get; set; } = TestEnum.Item2;
         public TestEnum SubReadOnlyEnum { get; private set; } = TestEnum.Item3;
         public TestSubSubItem SubSubItem { get; private set; } = new TestSubSubItem();
@@ -32,7 +32,7 @@ namespace WpfApplication1
         [Label("名前")] public string Name { get; set; } = "name";
         public string ReadOnlyStr { get; private set; } = "readonly";
         [IntRange(Min = 10, Max = 50)] public int Int { get; set; } = 10;
-        public int ReadOnlyInt { get; private set; } = 2;
+        //public int ReadOnlyInt { get; private set; } = 2;
 
         public TestSubItem SubItem { get; set; } = new TestSubItem();
 

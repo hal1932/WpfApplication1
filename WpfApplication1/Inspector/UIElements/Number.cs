@@ -7,8 +7,7 @@ namespace WpfApplication1.Inspector.UIElements
 {
     abstract class Number : PropertyElement
     {
-        protected abstract Slider CreateSlider();
-        protected abstract void SetSliderValue(Slider slider, PropertyInfo prop, object item);
+        protected abstract Slider CreateSlider(PropertyInfo prop, object item);
         protected abstract void OnTextBoxValueChanged(TextBox box, Slider slider);
         protected abstract void OnSliderValueChanged(Slider slider, TextBox box, PropertyInfo prop, object item);
 
@@ -28,17 +27,22 @@ namespace WpfApplication1.Inspector.UIElements
             };
             ValueInput = panel;
 
-            var valueInputText = new TextBox() { MinWidth = 50 };
+            var valueInputSlider = CreateSlider(prop, item);
+
+            var valueInputText = new TextBox()
+            {
+                Text = valueInputSlider.Value.ToString(),
+                MinWidth = 50,
+            };
+
             DockPanel.SetDock(valueInputText, Dock.Left);
             panel.Children.Add(valueInputText);
 
-            var valueInputSlider = CreateSlider();
             panel.Children.Add(valueInputSlider);
 
             valueInputText.TextChanged += (_, __) => OnTextBoxValueChanged(valueInputText, valueInputSlider);
             valueInputSlider.ValueChanged += (_, __) => OnSliderValueChanged(valueInputSlider, valueInputText, prop, item);
 
-            SetSliderValue(valueInputSlider, prop, item);
         }
     }
 
@@ -48,12 +52,13 @@ namespace WpfApplication1.Inspector.UIElements
             : base(prop, item)
         { }
 
-        protected override Slider CreateSlider()
+        protected override Slider CreateSlider(PropertyInfo prop, object item)
         {
             var slider = new Slider()
             {
                 SmallChange = 1,
                 LargeChange = 1,
+                Value = (int)prop.GetValue(item),
             };
 
             int min, max;
@@ -63,11 +68,6 @@ namespace WpfApplication1.Inspector.UIElements
             slider.Maximum = max;
 
             return slider;
-        }
-
-        protected override void SetSliderValue(Slider slider, PropertyInfo prop, object item)
-        {
-            slider.Value = (int)prop.GetValue(item);
         }
 
         protected override void OnTextBoxValueChanged(TextBox box, Slider slider)
@@ -108,9 +108,12 @@ namespace WpfApplication1.Inspector.UIElements
             : base(prop, item)
         { }
 
-        protected override Slider CreateSlider()
+        protected override Slider CreateSlider(PropertyInfo prop, object item)
         {
-            var slider = new Slider();
+            var slider = new Slider()
+            {
+                Value = (double)prop.GetValue(item),
+            };
 
             double min, max;
             TryGetRange(out min, out max, out _fractionalDigits);
@@ -123,11 +126,6 @@ namespace WpfApplication1.Inspector.UIElements
             slider.LargeChange = change;
 
             return slider;
-        }
-
-        protected override void SetSliderValue(Slider slider, PropertyInfo prop, object item)
-        {
-            slider.Value = (double)prop.GetValue(item);
         }
 
         protected override void OnTextBoxValueChanged(TextBox box, Slider slider)
