@@ -31,7 +31,7 @@ namespace WpfApplication1
     {
         [Label("名前")] public string Name { get; set; } = "name";
         public string ReadOnlyStr { get; private set; } = "readonly";
-        [IntRange(Min = 10, Max = 50)] public int Int { get; set; } = 10;
+        [IntRange(Min = 10, Max = 50)] public int Int { get; set; } = 1;
         public int ReadOnlyInt { get; private set; } = 2;
 
         public TestSubItem SubItem { get; set; } = new TestSubItem();
