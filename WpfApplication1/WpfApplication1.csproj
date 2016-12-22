@@ -68,11 +68,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Inspector\Attributes\DoubleRangeAttribute.cs" />
     <Compile Include="Inspector\Attributes\InspectorAttribute.cs" />
     <Compile Include="Inspector\Attributes\LabelAttribute.cs" />
     <Compile Include="Inspector\Attributes\IntRangeAttribute.cs" />
     <Compile Include="Inspector\UIElements\Enum.cs" />
-    <Compile Include="Inspector\UIElements\Integer.cs" />
+    <Compile Include="Inspector\UIElements\Number.cs" />
     <Compile Include="Inspector\UIElements\PropertyElement.cs" />
     <Compile Include="Inspector\UIElements\PropertyElementFactory.cs" />
     <Compile Include="Inspector\UIElements\String.cs" />

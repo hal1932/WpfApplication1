@@ -44,7 +44,24 @@ namespace WpfApplication1.Inspector.UIElements
             }
 
             min = 0;
-            max = 100;
+            max = 10;
+            return false;
+        }
+
+        protected bool TryGetRange(out double min, out double max, out int fractionalDigits)
+        {
+            var range = _prop.GetCustomAttribute<DoubleRangeAttribute>();
+            if (range != null)
+            {
+                min = range.Min;
+                max = range.Max;
+                fractionalDigits = range.FractionalDigits;
+                return true;
+            }
+
+            min = 0;
+            max = 10;
+            fractionalDigits = 1;
             return false;
         }
 

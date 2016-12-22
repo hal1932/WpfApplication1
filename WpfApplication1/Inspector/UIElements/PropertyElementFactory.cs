@@ -35,8 +35,7 @@ namespace WpfApplication1.Inspector.UIElements
 
             if (type == typeof(string)) return new String(prop, item);
             else if (type == typeof(int)) return new Integer(prop, item);
-            else if (type == typeof(short)) return new Integer(prop, item);
-            else if (type == typeof(long)) return new Integer(prop, item);
+            else if (type == typeof(double)) return new Double(prop, item);
             else if (type.IsEnum) return new Enum(prop, item);
 
             return new UserObject(prop, item);

@@ -24,6 +24,7 @@ namespace WpfApplication1
         public TestEnum SubEnum { get; set; } = TestEnum.Item2;
         public TestEnum SubReadOnlyEnum { get; private set; } = TestEnum.Item3;
         public TestSubSubItem SubSubItem { get; set; } = new TestSubSubItem();
+        public double SubDouble { get; set; } = 0.7;
     }
 
     public class TestConfigItem
@@ -37,5 +38,7 @@ namespace WpfApplication1
 
         public TestEnum Enum { get; set; } = TestEnum.Item0;
         public TestEnum ReadOnlyEnum { get; private set; } = TestEnum.Item1;
+
+        [Label("浮動小数点数")][DoubleRange(0, 20, 2)] public double Double { get; set; } = 0.5;
     }
 }
