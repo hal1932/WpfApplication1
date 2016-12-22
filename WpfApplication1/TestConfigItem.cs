@@ -23,7 +23,7 @@ namespace WpfApplication1
         public int SubReadOnlyInt { get; private set; } = 4;
         public TestEnum SubEnum { get; set; } = TestEnum.Item2;
         public TestEnum SubReadOnlyEnum { get; private set; } = TestEnum.Item3;
-        public TestSubSubItem SubSubItem { get; set; } = new TestSubSubItem();
+        public TestSubSubItem SubSubItem { get; private set; } = new TestSubSubItem();
         public double SubDouble { get; set; } = 0.7;
     }
 

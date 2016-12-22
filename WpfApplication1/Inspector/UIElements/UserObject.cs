@@ -15,6 +15,7 @@ namespace WpfApplication1.Inspector.UIElements
             {
                 Header = GetLabel(),
                 Margin = new Thickness(3),
+                IsEnabled = prop.SetMethod.IsPublic,
             };
             Container = container;
 
